@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Task 1</title>
+    <style>
+        /* Basic styling for the input and button */
+        input[type="number"] {
+            padding: 10px;
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Reverse a Number</h2>
+    <label for="number">Enter a Number:</label>
+    <input type="number" id="number" placeholder="Enter a number">
+    <button onclick="reverseNumber()">Reverse</button>
+    <p>Reversed Number: <span id="reversedNumber"></span></p>
+
+    <script>
+        function reverseNumber() {
+            const numberInput = document.getElementById("number");
+            const userInput = parseInt(numberInput.value);
+
+            // Check if the input is a valid number
+            if (!isNaN(userInput)) {
+                const reversed = parseInt(userInput.toString().split('').reverse().join(''));
+
+                document.getElementById("reversedNumber").textContent = reversed;
+            } else {
+                
+                document.getElementById("reversedNumber").textContent = "Invalid input. Please enter a number.";
+            }
+        }
+    </script>
+</body>
+</html>
