@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <title>Responsive Navbar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow ">
+        <div class="container-fluid">
+            
+            <a class="navbar-brand mx-2" href="#">Company Name</a>
+
+           
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active mx-2">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">Enterprise</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">Support</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <div class="btn bg-white text-primary border-2 border-primary rounded fw-medium">
+                            Sign up
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="d-flex flex-column mb-5 pb-5">
+
+        <span class="fs-1 fw-light text-muted text-center mt-5 w-auto">Pricing</span>
+        <span class="text-center">Qucikly build an effective pricing table for your potential customers with this <br>
+             Bootstrap example. It's built with default Bootstrap components and utilities <br>
+             with litle customization</span>
+        
+        <div class="d-flex justify-content-center align-items-center mt-3 gap-5 flex-wrap">
+            <div class="card shadow" style="width: 18rem;">
+                <div class="card-img-top text-center bg-light fs-5 py-2">Free</div>
+                <div class="card-body">
+                  <h5 class="card-title text-center fs-3 fw-normal"><span class="fw-semibold fs-2">$ 0 </span><span class="text-muted">/ mo</span></h5>
+                  <p class="card-text text-center">
+                    10 users included <br> 2 GB of storage <br> Email Support <br> Help center access
+                  </p>
+                  <a href="#" class="btn border-2 border-primary bg-white text-primary  w-100">Sign up for free</a>
+                </div>
+              </div>
+
+              <div class="card shadow" style="width: 18rem;">
+                <div class="card-img-top text-center bg-light fs-5 py-2">Pro</div>
+                <div class="card-body">
+                  <h5 class="card-title text-center fs-3 fw-normal"><span class="fw-semibold fs-2">$ 15 </span><span class="text-muted">/ mo</span></h5>
+                  <p class="card-text text-center">
+                    20 users included <br> 10 GB of storage <br> Priority email Support <br> Help center access
+                  </p>
+                  <a href="#" class="btn btn-primary w-100">Sign up for free</a>
+                </div>
+              </div>
+
+              <div class="card shadow" style="width: 18rem;">
+                <div class="card-img-top text-center bg-light fs-5 py-2">Enterprise</div>
+                <div class="card-body">
+                  <h5 class="card-title text-center fs-3 fw-normal"><span class="fw-semibold fs-2">$ 29 </span><span class="text-muted">/ mo</span></h5>
+                  <p class="card-text text-center">
+                    30 users included <br> 15 GB of storage <br> Phone and email Support <br> Help center access
+                  </p>
+                  <a href="#" class="btn btn-primary w-100">Sign up for free</a>
+                </div>
+              </div>
+
+
+        </div>
+    </div>
+
+
+<footer class="text-center text-lg-start bg-light text-muted">
+    
+    <section class="border-top pt-4">
+      <div class="container text-center text-md-start mt-5">
+        <div class="row mt-3">
+          <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 17 16" fill="none">
+                <path d="M6.37457 7.125V4.6582H8.15582C9.12848 4.6582 9.69684 5.11523 9.69684 5.89453C9.69684 6.69727 9.09332 7.125 7.93317 7.125H6.37457Z" fill="black"/>
+                <path d="M6.37457 10.8867H8.27301C9.4566 10.8867 10.0836 10.4062 10.0836 9.50977C10.0836 8.625 9.43317 8.16211 8.19684 8.16211H6.37457V10.8867Z" fill="black"/>
+                <path d="M4.00153 0C1.79239 0 0.00152588 1.79086 0.00152588 4V12C0.00152588 14.2091 1.79239 16 4.00153 16H12.0015C14.2107 16 16.0015 14.2091 16.0015 12V4C16.0015 1.79086 14.2107 0 12.0015 0H4.00153ZM5.06207 12V3.54492H8.46051C10.0484 3.54492 11.0035 4.35352 11.0035 5.6543C11.0035 6.53906 10.3531 7.33008 9.52106 7.4707V7.57031C10.6636 7.6875 11.4254 8.50195 11.4254 9.60352C11.4254 11.0918 10.3414 12 8.53668 12H5.06207Z" fill="black"/>
+                </svg>
+
+                <br>
+                &copy; 2017
+          </div>
+         
+          <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">
+              Features
+            </h6>
+            <p>Cool Stuff</p>
+            <p>Random feature</p>
+            <p>Team feature</p>
+          </div>
+          
+
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            <h6 class="text-uppercase fw-bold mb-4">
+              Resources
+            </h6>
+            <p>Resource</p>
+            <p>Resource name</p>
+            <p>Another resource</p>
+          </div>
+
+          <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+            
+            <h6 class="text-uppercase fw-bold mb-4">
+              About
+            </h6>
+            <p>Team</p>
+            <p>Locations</p>
+            <p>Privacy</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </footer>
+
+</body>
+
+</html>
