@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JS Task 2</title>
+    <style>
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <label for="inputString">Enter a string:</label>
+    <input type="text" id="inputString">
+    <button onclick="alphabetizeString()">Alphabetize</button>
+    <div id="output"></div>
+
+    <script>
+        function alphabetizeString() {
+            // Get the input string from the user
+            const inputElement = document.getElementById('inputString');
+            const inputString = inputElement.value;
+
+            // Check if the input string is not empty
+            if (inputString.trim() === '') {
+                alert('Please enter a string.');
+                return;
+            }
+
+            // Split the input string into an array of characters, sort it, and join it back into a string
+            const sortedString = inputString.split('').sort().join('');
+
+            // Display the sorted string
+            const outputElement = document.getElementById('output');
+            outputElement.textContent = `Alphabetized String: ${sortedString}`;
+        }
+    </script>
+</body>
+</html>
