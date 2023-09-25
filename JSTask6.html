@@ -1,61 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JS Task 6</title>
-    <style>
-        #animated-box {
-            width: 100px;
-            height: 100px;
-            background-color: #007BFF;
-            animation-name: slide;
-            animation-duration: 2s;
-            animation-timing-function: linear;
-            animation-iteration-count: infinite;
-            animation-direction: alternate;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Login</title>
 
-        @keyframes slide {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(200px);
-            }
-        }
-
-        #controls {
-            margin-top: 20px;
-        }
-    </style>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    .errormg {
+      display: none;
+    }
+  </style>
 </head>
+
 <body>
-    <div id="animated-box"></div>
-    <div id="controls">
-        <button id="startButton">Start Animation</button>
-        <button id="stopButton">Stop Animation</button>
+  <div class="container mt-5" style="max-width: 600px;">
+    <div class="bg-light p-4">
+      <div class="text-center h1 py-4"><i>Instagram</i> </div>
+      <form id="loginForm">
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+          </div>
+        </div>
+        <div id="username1" class=" text-danger errormg">Username is required </div> <br>
+
+        <div class="form-group">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            </div>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          </div>
+        </div>
+        <div id="password1" class="text-danger errormg">Password is required</div> <br>
+
+        <div class="form-group form-check ">
+          <div class="form-group form-check d-flex ">
+            <span>
+              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <label class="form-check-label" for="rememberMe">Remember me</label></span>
+            <a href="#" class="ml-auto">Forgot Password?</a>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-block" onclick="validateForm()">Log In</button>
+      </form>
     </div>
 
-    <script>
-        const animatedBox = document.getElementById('animated-box');
-        const startButton = document.getElementById('startButton');
-        const stopButton = document.getElementById('stopButton');
-        let animationInterval;
+  </div>
 
-        // Function to start the animation
-        function startAnimation() {
-            animatedBox.style.animationPlayState = 'running';
-        }
+  <p class="text-center mt-3">Don't have an account? <a href="#">Sign up here</a></p>
 
-        // Function to stop the animation
-        function stopAnimation() {
-            animatedBox.style.animationPlayState = 'paused';
-        }
+  <!-- Bootstrap JS (jQuery and Popper.js required) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Font Awesome JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 
-        // Attach click event listeners to the buttons
-        startButton.addEventListener('click', startAnimation);
-        stopButton.addEventListener('click', stopAnimation);
-    </script>
+  <script>
+    function validateForm() {
+
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      let isValid = true;
+
+      if (username === '') {
+        document.getElementById("username1").style.display = "block";
+        isValid = false;
+      }
+
+      if (password === '') {
+        document.getElementById("password1").style.display = "block";
+        isValid = false;
+      }
+
+      if (isValid) {
+        // Perform login logic here (e.g., AJAX request to the server)
+        alert('Logged in successfully.');
+        document.getElementById('loginForm').reset();
+      }
+    }
+
+  </script>
 </body>
+
 </html>
