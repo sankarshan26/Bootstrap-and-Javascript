@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Task 6</title>
+    <style>
+        #animated-box {
+            width: 100px;
+            height: 100px;
+            background-color: #007BFF;
+            animation-name: slide;
+            animation-duration: 2s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(200px);
+            }
+        }
+
+        #controls {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="animated-box"></div>
+    <div id="controls">
+        <button id="startButton">Start Animation</button>
+        <button id="stopButton">Stop Animation</button>
+    </div>
+
+    <script>
+        const animatedBox = document.getElementById('animated-box');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        let animationInterval;
+
+        // Function to start the animation
+        function startAnimation() {
+            animatedBox.style.animationPlayState = 'running';
+        }
+
+        // Function to stop the animation
+        function stopAnimation() {
+            animatedBox.style.animationPlayState = 'paused';
+        }
+
+        // Attach click event listeners to the buttons
+        startButton.addEventListener('click', startAnimation);
+        stopButton.addEventListener('click', stopAnimation);
+    </script>
+</body>
+</html>
