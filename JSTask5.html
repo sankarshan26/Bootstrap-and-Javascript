@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Task 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex ;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="url"],
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .error {
+            color: red;
+        }
+
+        .submit-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 18px;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name">
+                <span class="error" id="nameError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" style="display: inline;">
+                <span class="error" id="emailError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="website">Website:</label>
+                <input type="url" id="website" name="website">
+                <span class="error" id="websiteError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+                <span class="error" id="messageError"></span>
+            </div>
+
+            <button type="button" class="submit-button" onclick="validateForm()">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            // Get form input values
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const website = document.getElementById('website').value.trim();
+            const message = document.getElementById('message').value.trim();
+
+            // Reset error messages and borders
+            clearErrors();
+
+            let isValid = true;
+
+            // Validate Name
+            if (name === '') {
+                displayError('nameError', 'This field is required');
+                isValid = false;
+            }
+
+            // Validate Email
+            if (email === '') {
+                displayError('emailError', 'A valid email address is required');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                displayError('emailError', 'A valid email address is required');
+                isValid = false;
+            }
+
+            // Validate Website (URL)
+            if (website === '') {
+                displayError('websiteError', 'A valid Url is required');
+                isValid = false;
+            }
+            else if (!isValidUrl(website)){
+                displayError('websiteError', 'A valid Url is required');
+                isValid = false;
+            }
+
+            // Validate Message
+            if (message === '') {
+                displayError('messageError', 'This field is required');
+                isValid = false;
+            }
+
+            // If all fields are valid, submit the form (you can replace this with actual form submission logic)
+            if (isValid) {
+                alert('Form submitted successfully.');
+                document.getElementById('contactForm').reset();
+            }
+        }
+
+        function displayError(id, message) {
+            const errorElement = document.getElementById(id);
+            errorElement.textContent = message;
+            errorElement.style.color = 'red';
+
+            const inputElement = document.getElementById(id.replace('Error', ''));
+            inputElement.style.border = '1px solid red';
+        }
+
+        function clearErrors() {
+            const errorElements = document.querySelectorAll('.error');
+            errorElements.forEach((element) => {
+                element.textContent = '';
+            });
+
+            const inputElements = document.querySelectorAll('input, textarea');
+            inputElements.forEach((element) => {
+                element.style.border = '1px solid #ccc';
+            });
+        }
+
+        function isValidEmail(email) {
+            // A simple email validation regex
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidUrl(url) {
+            // A simple URL validation regex
+            const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+            return urlRegex.test(url);
+        }
+    </script>
+</body>
+</html>
