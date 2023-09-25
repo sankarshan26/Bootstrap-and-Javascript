@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Task 5</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+  <div class="container mt-5 bg-light p-4">
+    <form id="myForm">
+
+      <div class="form-group col-md-6">
+        <label for="firstName">First Name</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+          </div>
+          <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+        </div>
+        <span class="error text-danger" id="firstNameError"></span>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastName">Last Name</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+          </div>
+          <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+        </div>
+        <span class="error text-danger" id="lastNameError"></span>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="email">E-mail</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+          </div>
+          <input type="email" class="form-control" id="email" name="email" placeholder="E-mail">
+        </div>
+        <span class="error text-danger" id="emailError"></span>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="phone">Phone</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+          </div>
+          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Phone">
+        </div>
+        <span class="error text-danger" id="phoneError"></span>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="address">Address</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-map-marker"></i></span>
+          </div>
+          <input type="text" class="form-control" id="address" name="address" placeholder="Address">
+        </div>
+        <span class="error text-danger" id="addressError"></span>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="city">City</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-city"></i></span>
+          </div>
+          <input type="text" class="form-control" id="city" name="city" placeholder="City">
+        </div>
+        <span class="error text-danger" id="cityError"></span>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="state">State</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-flag"></i></span>
+          </div>
+          <input type="text" class="form-control" id="state" name="state" placeholder="State">
+        </div>
+        <span class="error text-danger" id="stateError"></span>
+      </div>
+      <!-- </div> -->
+
+      <div class="form-group col-md-6">
+        <label>Do you have hosting?</label>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="hostingYes" name="hosting" value="yes">
+          <label class="form-check-label" for="hostingYes">Yes</label>
+        </div>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="hostingNo" name="hosting" value="no">
+          <label class="form-check-label" for="hostingNo">No</label>
+        </div>
+        <span class="error text-danger" id="hostingError"></span>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="projectDescription">Project Description</label>
+        <div class="input-group">
+          <div class="input-group-prepend ">
+            <span class="input-group-text"><i class="fas fa-pencil-alt"></i></span>
+          </div>
+          <textarea class="form-control" id="projectDescription" name="projectDescription" rows="4"
+            placeholder="Project Description"></textarea>
+        </div>
+        <span class="error text-danger" id="projectDescriptionError"></span>
+      </div>
+
+      <button type="button" class="btn btn-warning text-white ml-5" onclick="validateForm()">Send</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS (jQuery and Popper.js required) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Font Awesome JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+  <script>
+    function validateForm() {
+      clearErrors();
+
+      const firstName = document.getElementById('firstName').value.trim();
+      const lastName = document.getElementById('lastName').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const address = document.getElementById('address').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const state = document.getElementById('state').value.trim();
+      const hosting = document.querySelector('input[name="hosting"]:checked');
+      const projectDescription = document.getElementById('projectDescription').value.trim();
+
+      let isValid = true;
+
+      if (firstName === '') {
+        displayError('firstNameError', 'Please supply your First Name');
+        isValid = false;
+      }
+
+      if (lastName === '') {
+        displayError('lastNameError', 'Please supply your Last Name');
+        isValid = false;
+      }
+
+      if (email === '') {
+        displayError('emailError', 'Please supply your email address');
+        isValid = false;
+      }
+
+      if (phone === '') {
+        displayError('phoneError', 'Please supply your Phone number');
+        isValid = false;
+      }
+
+      if (address === '') {
+        displayError('addressError', 'Please supply your Street Address');
+        isValid = false;
+      }
+
+      if (city === '') {
+        displayError('cityError', 'Please supply your City');
+        isValid = false;
+      }
+
+
+
+      if (isValid) {
+        alert('Form submitted successfully.');
+        document.getElementById('myForm').reset();
+      }
+    }
+
+    function displayError(id, message) {
+      const errorElement = document.getElementById(id);
+      errorElement.textContent = message;
+      const inputElement = document.getElementById(id.replace('Error', ''));
+      inputElement.style.borderColor = 'red';
+    }
+
+    function clearErrors() {
+      const errorElements = document.querySelectorAll('.error');
+      errorElements.forEach((element) => {
+        element.textContent = '';
+      });
+
+      const inputElements = document.querySelectorAll('input');
+      inputElements.forEach((element) => {
+        element.style.borderColor = '';
+      });
+    }
+  </script>
+</body>
+
+</html>
