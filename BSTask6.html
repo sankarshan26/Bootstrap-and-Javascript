@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Form with Validation</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <style>
+    .danger-icon {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container mt-5" style="max-width: 600px;">
+    <form id="myForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <div class="input-group">
+          <input type="text" class="form-control" id="name" name="name">
+          <div class="input-group-append">
+            <span class="input-group-text danger-icon" id="name1"><i
+                class="fas fa-exclamation-triangle text-danger"></i></span>
+          </div>
+        </div>
+        <span class="error text-danger" id="nameError"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <div class="input-group">
+          <input type="email" class="form-control" id="email" name="email">
+          <div class="input-group-append">
+            <span class="input-group-text danger-icon" id="email1"><i
+                class="fas fa-exclamation-triangle text-danger"></i></span>
+          </div>
+        </div>
+        <span class="error text-danger" id="emailError"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-group">
+          <input type="password" class="form-control" id="password" name="password">
+          <div class="input-group-append">
+            <span class="input-group-text danger-icon" id="password1"><i
+                class="fas fa-exclamation-triangle text-danger"></i></span>
+          </div>
+        </div>
+        <span class="error text-danger" id="passwordError"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="hobbies">Hobbies</label>
+        <input type="number" class="form-control" id="hobbies" name="hobbies">
+      </div>
+
+      <button type="button" class="btn btn-danger w-100" onclick="validateForm()">Submit</button>
+    </form>
+  </div>
+
+  <!-- Bootstrap JS (jQuery and Popper.js required) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Font Awesome JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+  <script>
+    function validateForm() {
+      clearErrors();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      let isValid = true;
+
+      if (name === '') {
+        displayError('nameError', 'Name is required');
+        document.getElementById("name1").style.display = "inline";
+        isValid = false;
+      }
+
+      if (email === '') {
+        displayError('emailError', 'Email is required');
+        document.getElementById("email1").style.display = "inline";
+        isValid = false;
+      }
+
+      if (password === '') {
+        displayError('passwordError', 'Password is required');
+        document.getElementById("password1").style.display = "inline";
+        isValid = false;
+      }
+
+      if (isValid) {
+        alert('Form submitted successfully.');
+        document.getElementById('myForm').reset();
+      }
+    }
+
+    function displayError(id, message) {
+      const errorElement = document.getElementById(id);
+      errorElement.textContent = message;
+      const inputElement = document.getElementById(id.replace('Error', ''));
+      inputElement.style.borderColor = 'red';
+    }
+
+    function clearErrors() {
+      const errorElements = document.querySelectorAll('.error');
+      errorElements.forEach((element) => {
+        element.textContent = '';
+      });
+
+      const inputElements = document.querySelectorAll('input');
+      inputElements.forEach((element) => {
+        element.style.borderColor = '';
+      });
+    }
+  </script>
+</body>
+
+</html>
